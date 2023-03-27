@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let terje = { name: 'Terje', age: 47 };
+
+        let people = [
+            { name: 'Per', age: 17 },
+            { name: 'Pål', age: 18 },
+            { name: 'Espen', age: 19 },
+        ];
+
+        let html = ''
+        for (let person of people) {
+            html += `<li>${person.name} - ${person.age}</li>`;
+        }
+
+        //'<li>Per - 17</li><li>Pål - 18</li><li>Espen - 19</li>'
+
+        function createHtmlForOnePerson(person) {
+            return `<li>${person.name} - ${person.age}</li>`;
+        }
+
+        // createHtmlForOnePerson(terje)
+        // '<li>Terje - 47</li>'
+        // createHtmlForOnePerson(people[0])
+        // '<li>Per - 17</li>'
+
+        html = ''
+        for (let person of people) {
+            html += createHtmlForOnePerson(person)
+        }
+
+        people.map(createHtmlForOnePerson)
+        //  ['<li>Per - 17</li>', '<li>Pål - 18</li>', '<li>Espen - 19</li>']
+
+        people.map(createHtmlForOnePerson).join('')
+        //'<li>Per - 17</li><li>Pål - 18</li><li>Espen - 19</li>'
+
+        numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+        numbers.map(n => n * n)
+        //(9)) [1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+        function doX(n) {
+            return n * n;
+        }
+
+        numbers.map(doX)
+        //(9)) [1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+        numbers.map(n => n * n).filter(n => n > 50)
+        // (2) [64, 81]
+
+        people.filter(p => p.age < 19)
+        // [
+        //     { name: 'Per', age: 17 },
+        //     { name: 'Pål', age: 18 },
+        // ]
+
+        people
+            .filter(p => p.age < 19)
+            .map(p => `<li>${p.name} - ${p.age}</li>`)
+            .join('')
+        // '<li>Per - 17</li><li>Pål - 18</li>'
+    
+    </script>
+
+    https://www.w3schools.com/jsref/jsref_filter.asp
+
+    https://www.w3schools.com/jsref/jsref_map.asp
+</body>
+
+</html>
